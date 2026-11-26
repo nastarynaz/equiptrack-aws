@@ -1,8 +1,17 @@
 # EquipTrack
 
-EquipTrack is a CRUD API for laboratory equipment inventory. The Week 12 project covers the architecture, initial infrastructure, and connectivity tests for one equipment entity.
+EquipTrack is a small laboratory equipment inventory application for Week 12 of Cloud Computing at Universitas Gadjah Mada. It uses Track B (Containers): an Nginx frontend, an Express API, and MySQL on Docker Compose.
 
-The target environment is the authorized lab in AWS Academy Lab Project - Microservices and CI/CD Pipeline Builder (course 195218). Track C is the proposed design pending confirmation of Lambda, DynamoDB, and API Gateway permissions.
+- [Architecture and network design](docs/architecture.md)
+- [AWS Academy deployment plan](docs/deployment-plan.md)
+- [Design brief](docs/design-brief.md)
+- [Evidence guide](evidence/README.md)
+
+## Run locally
+
+With Docker Engine and Compose installed, run `bash scripts/run-stack.sh`, then open `http://127.0.0.1:8080`. The script uses a generated database password in the ignored `.env` file unless one is already configured. For a different local port, set `EQUIPTRACK_PORT` before launching.
+
+The frontend provides create, find by UUID, update, and delete actions. Run `bash scripts/smoke-test.sh http://127.0.0.1:8080` to verify the API. The tests require curl and Python 3.
 
 ## API
 
@@ -13,10 +22,6 @@ The target environment is the authorized lab in AWS Academy Lab Project - Micros
 | PUT | `/equipment/{id}` | 200 |
 | DELETE | `/equipment/{id}` | 204 |
 
-POST and PUT accept a JSON object with `name`, `category`, `quantity`, and `condition`. Quantity is a non-negative integer. Condition is `Good`, `Damaged`, or `Maintenance`. The service generates the UUID and UTC timestamps. Invalid requests return 400, missing records return 404, ID conflicts return 409, and internal failures return 500.
+POST and PUT accept JSON with `name`, `category`, `quantity`, and `condition`. Quantity is a non-negative safe integer. Condition is `Good`, `Damaged`, or `Maintenance`. The service generates the UUID and UTC timestamps. Invalid input returns 400, missing equipment returns 404, duplicate IDs return 409, and unexpected errors return 500.
 
-## Verification
-
-Run `python3 -m py_compile lambda_function.py` to check the Python source. The Lambda console event is in [tests/create-equipment-event.json](tests/create-equipment-event.json). To run the HTTP smoke tests against the deployed endpoint, use `bash scripts/smoke-test.sh "$API_URL"` with a test client authorized to invoke the endpoint. Keep the live URL and temporary credentials outside the repository.
-
-See the [architecture](docs/architecture.md) and [deployment plan](docs/deployment-plan.md).
+`GET /health` checks that the API can query MySQL. The frontend is bound to loopback, and neither Express nor MySQL publishes a host port.

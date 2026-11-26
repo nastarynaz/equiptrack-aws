@@ -1,25 +1,27 @@
-# Proposed Track C architecture
+# Track B architecture
 
-The planned region is `us-east-1`, subject to the AWS Academy lab's service permissions. The application runs on AWS-managed networking and does not require a customer-managed VPC. See the [editable SVG](architecture.svg).
+EquipTrack uses an Nginx frontend and an Express API, with MySQL as a third container. The application was verified locally in Docker. The target host is one EC2 instance in the AWS Academy lab, in `us-east-1`. See the [editable SVG](architecture.svg).
 
 ```mermaid
 flowchart LR
-    client["Client / terminal"]
-    subgraph aws["AWS Cloud · us-east-1"]
-        subgraph managed["AWS-managed networking"]
-            api["API Gateway HTTP API"]
-            fn["Lambda · EquipTrack"]
-            db["DynamoDB · Equipment"]
-            api <-->|"Lambda proxy v2.0"| fn
-            fn <-->|"Boto3 · CRUD and item data"| db
+    client["Browser / terminal"]
+    subgraph aws["AWS Academy · us-east-1 · planned deployment"]
+        subgraph vpc["Lab VPC · restricted security group"]
+            subgraph host["EC2 development host"]
+                frontend["Nginx frontend · 8080"]
+                backend["Express API · 3000"]
+                db["MySQL · 3306 · persistent volume"]
+                frontend <-->|"HTTP / JSON · edge bridge"| backend
+                backend <-->|"MySQL · internal database bridge"| db
+            end
         end
-        iam["Lab-provided IAM role"]
-        logs["CloudWatch Logs"]
-        iam -. "Execution permissions" .-> fn
-        fn -->|"Invocation logs"| logs
+        profile["Lab-provided IAM identity"]
+        registry["Private Amazon ECR repositories"]
+        profile -. "Authorized image push and pull" .-> registry
+        registry -. "Application images" .-> host
     end
-    client <-->|"HTTPS / JSON"| api
-    repo["Private GitHub repository"] -. "Versioned Lambda source" .-> fn
+    client <-->|"Loopback preview or authorized tunnel"| frontend
+    repo["Private GitHub repository"] -. "Versioned source" .-> host
 ```
 
-All cloud components in this diagram are planned. The Lambda execution role must allow the four item operations and CloudWatch logging. Prefer IAM-authorized routes where the lab supplies an authorized test identity. Use dummy data and keep endpoints out of repository documentation.
+Only the frontend is bound to the host loopback address. The backend joins both Docker networks. MySQL joins only the internal database network and keeps its data in a named volume. A cloud deployment uses the network controls provided by the Academy lab and temporary IAM credentials for ECR. Database traffic uses the application MySQL account and parameterized queries.
