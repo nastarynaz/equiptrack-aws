@@ -12,3 +12,8 @@ __pycache__/
 evidence/*
 !evidence/README.md
 submission/
+!.env.example
+node_modules/
+.aws-config*
+.gh-token*
+*.log

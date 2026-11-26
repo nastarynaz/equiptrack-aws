@@ -1,0 +1,22 @@
+:root { color-scheme: light; font: 16px/1.5 system-ui, sans-serif; color: #172c39; background: #f1f5f3; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 52rem; margin: auto; padding: clamp(1rem, 5vw, 3rem); }
+header { border-bottom: 3px solid #087068; margin-bottom: 1.5rem; }
+header p { color: #075f59; font-weight: 700; margin: 0; }
+h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); line-height: 1.12; margin: .3rem 0 1rem; }
+h2 { margin: 0 0 1rem; font-size: 1.25rem; }
+form { background: #fff; padding: 1rem; border: 1px solid #b7c9c6; border-radius: .4rem; margin-bottom: 1rem; }
+label { display: block; font-weight: 600; }
+input, select, button { font: inherit; border-radius: .25rem; min-height: 2.75rem; }
+input, select { background: #fff; color: inherit; border: 1px solid #657976; padding: .45rem .6rem; width: 100%; margin-top: .25rem; }
+button { background: #075f59; color: #fff; border: 1px solid #075f59; padding: .45rem .8rem; cursor: pointer; font-weight: 600; }
+button.secondary { color: #075f59; background: #fff; }
+button:disabled { opacity: .65; cursor: wait; }
+:focus-visible { outline: 3px solid #075f59; outline-offset: 3px; }
+.fields { display: grid; gap: .8rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
+.actions { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1rem; }
+#lookup { display: grid; gap: .5rem; }
+#lookup label { grid-column: 1 / -1; }
+#status { overflow-wrap: anywhere; min-height: 1.5rem; }
+@media (min-width: 33rem) { #lookup { grid-template-columns: minmax(0, 1fr) auto; align-items: end; } }

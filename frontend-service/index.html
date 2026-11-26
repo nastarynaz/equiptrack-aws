@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EquipTrack | Laboratory inventory</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header><p>EquipTrack</p><h1>Laboratory equipment inventory</h1></header>
+    <form id="lookup">
+      <label for="equipment-id">Equipment ID</label>
+      <input id="equipment-id" required placeholder="Paste an equipment UUID" autocomplete="off">
+      <button type="submit">Find equipment</button>
+    </form>
+    <form id="editor">
+      <h2 id="editor-title">Add equipment</h2>
+      <div class="fields">
+        <label>Name<input name="name" maxlength="120" required></label>
+        <label>Category<input name="category" maxlength="80" required></label>
+        <label>Quantity<input name="quantity" type="number" min="0" max="9007199254740991" step="1" required></label>
+        <label>Condition<select name="condition"><option>Good</option><option>Damaged</option><option>Maintenance</option></select></label>
+      </div>
+      <div class="actions">
+        <button type="submit" id="save">Create record</button>
+        <button type="button" id="reset" class="secondary" hidden>New record</button>
+        <button type="button" id="delete" class="secondary" hidden>Delete record</button>
+      </div>
+    </form>
+    <p id="status" role="status" aria-live="polite"></p>
+  </main>
+</body>
+</html>
