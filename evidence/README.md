@@ -1,3 +1,5 @@
 # Evidence
 
-Keep raw lab screenshots and test output in this directory locally. Capture the course entry point, session status and budget, the selected services and permissions, and actual connectivity results. Exclude session credentials and redact sensitive identifiers when they are unnecessary to verify a result.
+Cloud evidence identifies the AWS Academy course, Vocareum session, and any observed deployment results or permission errors. A local Docker run verifies the application separately. The evidence appendix labels the environment for every test.
+
+Store screenshots and test output here locally. Keep session credentials, private keys, database passwords, and live URLs outside version control and the submission archive.
