@@ -1,0 +1,14 @@
+.env
+.env.*
+.aws/
+credentials
+*.pem
+*.key
+*.p12
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
+evidence/*
+!evidence/README.md
+submission/
