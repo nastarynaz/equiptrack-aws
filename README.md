@@ -7,6 +7,8 @@ EquipTrack is a small laboratory equipment inventory application for Week 12 of 
 - [Design brief](docs/design-brief.md)
 - [Evidence guide](evidence/README.md)
 
+The two application images built and the Compose stack passed connectivity tests on AWS Academy Cloud9 in `us-east-1`. The host uses Amazon Linux 2023 and the course-provided lab network. Both private Amazon ECR repositories contain a verified `week12` image.
+
 ## Run locally
 
 With Docker Engine and Compose installed, run `bash scripts/run-stack.sh`, then open `http://127.0.0.1:8080`. The script uses a generated database password in the ignored `.env` file unless one is already configured. For a different local port, set `EQUIPTRACK_PORT` before launching.

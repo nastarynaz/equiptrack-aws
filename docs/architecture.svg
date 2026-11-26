@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 500" width="1040" height="500" role="img" aria-labelledby="title desc">
   <title id="title">EquipTrack Track B containers architecture</title>
-  <desc id="desc">Nginx frontend forwards client requests to Express over the Docker edge network; Express accesses MySQL over its internal database bridge. The Compose stack was verified locally. AWS Academy EC2 hosting and ECR are planned.</desc>
+  <desc id="desc">Nginx frontend forwards client requests to Express over the Docker edge network; Express accesses MySQL over its internal database bridge. The stack ran and passed connectivity checks on an AWS Academy Cloud9 EC2 host.</desc>
   <rect width="1040" height="500" fill="#fff"/>
-  <rect x="214" y="55" width="810" height="370" rx="10" fill="#f4f7fa" stroke="#6a7685" stroke-dasharray="8 5"/>
-  <rect x="233" y="105" width="772" height="222" rx="8" fill="#fff" stroke="#6a7685" stroke-dasharray="6 4"/>
+  <rect x="214" y="55" width="810" height="370" rx="10" fill="#f4f7fa" stroke="#6a7685"/>
+  <rect x="233" y="105" width="772" height="222" rx="8" fill="#fff" stroke="#6a7685"/>
   <rect x="250" y="154" width="738" height="153" rx="7" fill="#e8f5ef" stroke="#267264"/>
   <g font-family="Helvetica, Arial, sans-serif" fill="#1b2b3b">
     <text x="17" y="34" font-size="24" font-weight="bold">EquipTrack | Track B</text>
     <text x="233" y="83" font-size="18" font-weight="bold">AWS Academy lab · us-east-1</text>
-    <text x="251" y="132" font-size="16" font-weight="bold">Lab VPC / EC2 host · restricted security group</text>
+    <text x="251" y="132" font-size="16" font-weight="bold">LabVPC / Public Subnet1 · Cloud9 EC2 (t3.small)</text>
     <text x="267" y="181" font-size="16" font-weight="bold">Docker Compose stack</text>
     <g fill="#fff" stroke="#395573" stroke-width="1.5">
       <rect x="18" y="204" width="132" height="64" rx="6"/>
@@ -30,15 +30,15 @@
     <g text-anchor="middle" font-size="13">
       <text x="84" y="252">Browser / terminal</text><text x="345" y="252">Host loopback :8080</text>
       <text x="606" y="252">Container :3000</text><text x="887" y="252">:3306 · named volume</text>
-      <text x="206" y="222">Preview / tunnel</text><text x="477" y="222">HTTP / JSON</text>
+      <text x="206" y="222">Loopback HTTP</text><text x="477" y="222">HTTP / JSON</text>
       <text x="742" y="222">SQL / data</text><text x="477" y="254">Edge bridge</text>
       <text x="742" y="254">Internal bridge</text><text x="736" y="364">IAM authorization</text>
-      <text x="305" y="363">Versioned source</text><text x="938" y="337">Image pull</text>
+      <text x="305" y="363">Versioned source</text><text x="938" y="337">Planned pull</text>
     </g>
     <rect x="18" y="455" width="16" height="12" fill="#e8f5ef" stroke="#267264"/>
-    <text x="43" y="466" font-size="14">Verified locally</text>
+    <text x="43" y="466" font-size="14">Verified on Cloud9</text>
     <rect x="187" y="455" width="16" height="12" fill="#fff" stroke="#6a7685" stroke-dasharray="3 2"/>
-    <text x="212" y="466" font-size="14">Planned cloud deployment</text>
+    <text x="212" y="466" font-size="14">Registry and IAM path</text>
   </g>
   <g fill="none" stroke="#486176" stroke-width="2">
     <path d="M155 234H261m-99-5-7 5 7 5m92-10 7 5-7 5"/>

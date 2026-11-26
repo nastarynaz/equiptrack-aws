@@ -32,14 +32,14 @@ Invalid input returns 400. Missing records return 404. Duplicate identifiers ret
 
 ## 3. Architecture, Network, and Security
 
-Nginx serves the inventory form and forwards API requests to Express. Express uses parameterized SQL on an internal bridge network to reach MySQL, which stores data in a named volume. Only Nginx binds to host loopback. Remote access is planned through an authorized lab tunnel or preview. Private ECR repositories are planned for both application images, using the lab identity for registry access.
+Nginx serves the inventory form and forwards API requests to Express. Express uses parameterized SQL on an internal bridge network to reach MySQL, which stores data in a named volume. Only Nginx binds to host loopback. The Cloud9 IDE connects through the AWS-managed SSH rule. The test client uses host loopback. The lab identity provides temporary authorization for ECR.
 
 ![Track B architecture](architecture.svg)
 
 ## 4. Git Repository and Deployment Plan
 
-The [private repository](https://github.com/nastarynaz/equiptrack-aws) includes the source, Dockerfiles, schema, deployment plan, and smoke tests. Both application images built on macOS. Local containers verified the frontend-to-API-to-MySQL path, all nine CRUD checks, and input rejection. AWS denied direct `ec2:RunInstances` and Cloud9 SSM `ssm:StartSession`. Cloud hosting and image verification in ECR are pending. The next stage is to run the same stack in a permitted Academy development environment and repeat the smoke tests there.
+The [private repository](https://github.com/nastarynaz/equiptrack-aws) includes the source, Dockerfiles, schema, deployment plan, and smoke tests. Both application images built on macOS and in AWS Academy. Cloud9 SSH provided an EC2 t3.small development host in LabVPC / Public Subnet1. The deployed stack passed all nine CRUD smoke checks, a MySQL health query, and malformed JSON rejection. Direct EC2 and Cloud9 SSM attempts were blocked by IAM. Cloud9 offered Amazon Linux 2023, which was used for the host. The private ECR repositories `equiptrack-frontend` and `equiptrack-backend` both returned verified digests for `week12`. Future development would add inventory listing and user authentication before broader use.
 
 ## 5. Cost Management
 
-Vocareum displayed $0 used of a $40 lab allowance at the session check. The cloud plan uses one development host, a short idle timeout, and two private image repositories. The Compose stack requires no public application ports, dedicated database service, or load balancer.
+Vocareum displayed $0 used of a $40 lab allowance at the session check. The cloud environment uses one development host with a 30-minute idle timeout. The Compose stack requires no public application ports, dedicated database service, or load balancer.
