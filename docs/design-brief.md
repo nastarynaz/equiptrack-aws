@@ -43,3 +43,5 @@ The [private repository](https://github.com/nastarynaz/equiptrack-aws) includes 
 ## 5. Cost Management
 
 Vocareum displayed $0 used of a $40 lab allowance at the session check. The cloud environment uses one development host with a 30-minute idle timeout. The Compose stack requires no public application ports, dedicated database service, or load balancer.
+
+Both project EC2 instances were stopped after testing, and the Vocareum session ended. Cloud9, EC2 storage, and ECR resources were retained for assessment. Vocareum could not refresh spending at closure, so the displayed figure is a budget observation.
