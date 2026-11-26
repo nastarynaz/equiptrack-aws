@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="395" viewBox="0 0 1040 395" role="img" aria-labelledby="title desc">
+  <title id="title">EquipTrack proposed serverless architecture</title>
+  <desc id="desc">The terminal sends HTTPS requests to API Gateway, which invokes Lambda. Lambda accesses DynamoDB with Boto3 using a lab IAM role and writes execution logs to CloudWatch. GitHub stores the source.</desc>
+  <rect width="1040" height="395" fill="#ffffff"/>
+  <rect x="216" y="50" width="809" height="278" rx="12" fill="#f4f7fa" stroke="#617182" stroke-dasharray="7 5"/>
+  <rect x="235" y="94" width="770" height="119" rx="8" fill="#ffffff" stroke="#a1abba" stroke-dasharray="5 4"/>
+  <g font-family="Helvetica, Arial, sans-serif" fill="#1b2b3b">
+    <text x="17" y="29" font-size="23" font-weight="bold">EquipTrack | Proposed Track C</text>
+    <text x="234" y="77" font-size="18" font-weight="bold">AWS Cloud · target us-east-1</text>
+    <text x="249" y="117" font-size="14">AWS-managed networking</text>
+    <g fill="#ffffff" stroke="#3b5873" stroke-width="1.5">
+      <rect x="17" y="136" width="136" height="60" rx="7"/>
+      <rect x="249" y="136" width="166" height="60" rx="7"/>
+      <rect x="537" y="136" width="159" height="60" rx="7"/>
+      <rect x="826" y="136" width="166" height="60" rx="7"/>
+      <rect x="537" y="253" width="159" height="56" rx="7"/>
+      <rect x="826" y="253" width="166" height="56" rx="7"/>
+      <rect x="17" y="253" width="136" height="56" rx="7"/>
+    </g>
+    <g text-anchor="middle" font-size="16" font-weight="bold">
+      <text x="85" y="171">Terminal</text>
+      <text x="332" y="162">API Gateway</text>
+      <text x="616" y="162">AWS Lambda</text>
+      <text x="909" y="162">DynamoDB</text>
+      <text x="616" y="286">Lab IAM role</text>
+      <text x="909" y="286">CloudWatch Logs</text>
+      <text x="85" y="286">GitHub</text>
+    </g>
+    <g text-anchor="middle" font-size="14">
+      <text x="332" y="181">HTTP API</text>
+      <text x="616" y="181">EquipTrack</text>
+      <text x="909" y="181">Equipment</text>
+      <text x="201" y="155">HTTPS/JSON</text>
+      <text x="476" y="155">Proxy v2.0</text>
+      <text x="761" y="155">Boto3 CRUD</text>
+      <text x="715" y="235">Invocation logs</text>
+      <text x="550" y="225">Role trust + permissions</text>
+      <text x="327" y="275">Versioned source</text>
+      <text x="463" y="362">Bidirectional links carry requests and responses. Dashed boundary denotes planned infrastructure.</text>
+    </g>
+  </g>
+  <g fill="none" stroke="#536a80" stroke-width="2">
+    <path d="M158 167H244m-79-5-7 5 7 5m72-10 7 5-7 5"/>
+    <path d="M420 167H532m-105-5-7 5 7 5m98-10 7 5-7 5"/>
+    <path d="M701 167H821m-113-5-7 5 7 5m106-10 7 5-7 5"/>
+    <path d="M616 252V201m-5 7 5-7 5 7" stroke-dasharray="5 4"/>
+    <path d="M676 198v44h233v7m-5-7 5 7 5-7"/>
+    <path d="M154 281h377m-7-5 7 5-7 5" stroke-dasharray="5 4"/>
+  </g>
+</svg>
